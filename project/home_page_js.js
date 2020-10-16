@@ -3,10 +3,10 @@ function setup() {
 }
 
 function draw() {
-	drawingContext.shadowOffsetX = 5;
-	drawingContext.shadowOffsetY = 5;
-	drawingContext.shadowBlur = 3;
-	drawingContext.shadowColor = 'gray';
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowColor = 'light-gray';
 	fill(25, 154, 75);
 	beginShape();
 	vertex(0, 2 * windowHeight/7);
