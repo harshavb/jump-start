@@ -4,6 +4,7 @@ function setup() {
 
 function draw() {
 	var context = p5.drawingContext;
+	context.shadowOffsetX = 5;
 	fill(25, 154, 75);
 	beginShape();
 	vertex(0, 2 * windowHeight/7);
