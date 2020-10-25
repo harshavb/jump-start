@@ -1,12 +1,15 @@
 let settings;
 let gaming;
+let mouseHoverChecker;
+//let backArrow;
+
 let circleCount;
 let circleXPositions;
 let circleYPositions;
 let circleXSpeeds;
 let circleYSpeeds;
 let circleSizes;
-let mouseHoverChecker;
+
 let speed;
 let growthSpeed;
 let maxRadius;
@@ -125,9 +128,15 @@ function makeNewCircle(oldX, oldY, i)
 		}
 	}
 }
+
+function preload()
+{
+	//backArrow = loadImage('assets/back-arrow.png');
+}
 	
 function setup()
 {
+	//image(backArrow, 0, 0);
 	settings = true;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
@@ -233,10 +242,6 @@ function mousePressed()
 			cursor(ARROW);
 			gaming = true;
 			settings = false;
-			
-			//drawingContext.shadowBlur = 0;
-			//drawingContext.shadowOffsetX = 0;
-			//drawingContext.shadowOffsetY = 0;
 			
 			fill('red');
 			stroke('maroon');

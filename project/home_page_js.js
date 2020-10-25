@@ -128,7 +128,7 @@ function draw()
 			break;
 	}
 	
-	drawHomePage(frames1, frames2, frames3, (windowWidth/2 - mouseX)/30, (windowHeight/2 - mouseY)/30);
+	if(frames1 > 0 || frames2 > 0 || frames3 > 0) drawHomePage(frames1, frames2, frames3, (windowWidth/2 - mouseX)/30, (windowHeight/2 - mouseY)/30);
 }
 
 function mouseClicked()
