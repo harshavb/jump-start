@@ -49,8 +49,33 @@ function drawTimer()
 	text(time, width/2, height/7);
 }
 
-function drawLine(difficulty)
+function drawLine()
 {
+	switch(usedColors[parseInt(circleClicked/2)])
+	{
+		case 0:
+			fill('red');
+			stroke('maroon');
+			break;
+		case 1:
+			fill('lawngreen');
+			stroke('green');
+			break;
+		case 2:
+			fill('mediumturquoise');
+			stroke('mediumblue');
+			break;
+		case 3:
+			fill('yellow');
+			stroke('orange');
+			break;
+		case 4:
+			fill('orchid');
+			stroke('purple');
+			break;
+		default:
+			break;
+	}
 	line(xStart, yStart, mouseX, mouseY)
 }
 
@@ -62,7 +87,7 @@ function pairSuccessStart()
 
 function drawCircles()
 {
-	for(i = 0; i < circleCount/2; i++)
+	for(i = 0; i < parseInt(circleCount/2); i++)
 	{
 		switch(usedColors[i])
 		{
@@ -75,7 +100,7 @@ function drawCircles()
 				stroke('green');
 				break;
 			case 2:
-				fill('mediumturquiose');
+				fill('mediumturquoise');
 				stroke('mediumblue');
 				break;
 			case 3:
@@ -102,7 +127,8 @@ function makeNewPair()
 	let newY2;
 	let newIsAway = false;
 	let colorIsUnique = false;
-	usedColors[circleClicked] = 100;
+	console.log(usedColors);
+	usedColors[parseInt(circleClicked/2)] = 100;
 	while(!colorIsUnique)
 	{
 		switch(Math.floor(Math.random() * 5))
@@ -110,45 +136,35 @@ function makeNewPair()
 			case 0:
 				if(!usedColors.includes(0))
 				{
-					fill('red');
-					stroke('maroon');
-					usedColors[circleClicked/2] = 0;
+					usedColors[parseInt(circleClicked/2)] = 0;
 					colorIsUnique = true;
 				}
 				break;
 			case 1:
 				if(!usedColors.includes(1))
 				{
-					fill('lawngreen');
-					stroke('green');
-					usedColors[circleClicked/2] = 1;
+					usedColors[parseInt(circleClicked/2)] = 1;
 					colorIsUnique = true;
 				}
 				break;
 			case 2:
 				if(!usedColors.includes(2))
 				{
-					fill('mediumturquiose');
-					stroke('mediumblue');
-					usedColors[circleClicked/2] = 2;
+					usedColors[parseInt(circleClicked/2)] = 2;
 					colorIsUnique = true;
 				}
 				break;
 			case 3:
 				if(!usedColors.includes(3))
 				{
-					fill('yellow');
-					stroke('orange');
-					usedColors[circleClicked/2] = 3;
+					usedColors[parseInt(circleClicked/2)] = 3;
 					colorIsUnique = true;
 				}
 				break;
 			case 4:
 				if(!usedColors.includes(4))
 				{
-					fill('orchid');
-					stroke('purple');
-					usedColors[circleClicked/2] = 4;
+					usedColors[parseInt(circleClicked/2)] = 4;
 					colorIsUnique = true;
 				}
 				break;
@@ -156,19 +172,23 @@ function makeNewPair()
 				break;
 		}
 	}
+	let a = Math.sqrt(windowHeight * windowHeight + (windowWidth * windowWidth))
 	while(!newIsAway)
 	{
 		newIsAway = true;
-		newX = Math.random() * windowWidth;
-		newY = Math.random() * windowHeight;
-		newX2 = Math.random() * windowWidth;
-		newY2 = Math.random() * windowHeight;
+		newX = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
+		newY = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
+		newX2 = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
+		newY2 = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
 		for(j = 0; j < circleCount; j++)
 		{
-			if(dist(newX, newY, circleXPositions[j], circleYPositions[j]) > radius
-				&& dist(newX2, newY2, circleXPositions[j], circleYPositions[j]) > radius
-				&& dist(newX, newY, newX2, newY2) > windowHeight/4) newIsAway = true;
-			else newIsAway = false;
+			if(dist(newX, newY, circleXPositions[j], circleYPositions[j]) < radius * 4
+			|| dist(newX2, newY2, circleXPositions[j], circleYPositions[j]) < radius * 4
+			|| dist(newX, newY, newX2, newY2) < a/4) 
+			{
+				newIsAway = false;
+				break;
+			}
 		}
 		if(newIsAway)
 		{
@@ -187,8 +207,8 @@ function makeNewPair()
 				circleYPositions[circleClicked + 1] = newY2;
 			}
 			
-			circle(circleXPositions[circleClicked * 2], circleYPositions[circleClicked * 2], radius * 2);
-			circle(circleXPositions[circleClicked * 2 + 1], circleYPositions[circleClicked * 2 + 1], radius * 2);
+			circle(newX, newY, radius * 2);
+			circle(newX, newY, radius * 2);
 		}
 	}
 }
@@ -321,10 +341,8 @@ function mousePressed()
 			gaming = true;
 			settings = false;
 			
-			fill('red');
-			stroke('maroon');
 			strokeWeight(1);
-			for(i = 0; i < circleCount/2; i++)
+			for(i = 0; i < parseInt(circleCount/2); i++)
 			{
 				newIsAway = false;
 				colorIsUnique = false;
@@ -335,8 +353,6 @@ function mousePressed()
 						case 0:
 							if(!usedColors.includes(0))
 							{
-								fill('red');
-								stroke('maroon');
 								usedColors[i] = 0;
 								colorIsUnique = true;
 							}
@@ -344,8 +360,6 @@ function mousePressed()
 						case 1:
 							if(!usedColors.includes(1))
 							{
-								fill('lawngreen');
-								stroke('green');
 								usedColors[i] = 1;
 								colorIsUnique = true;
 							}
@@ -353,8 +367,6 @@ function mousePressed()
 						case 2:
 							if(!usedColors.includes(2))
 							{
-								fill('mediumturquiose');
-								stroke('mediumblue');
 								usedColors[i] = 2;
 								colorIsUnique = true;
 							}
@@ -362,8 +374,6 @@ function mousePressed()
 						case 3:
 							if(!usedColors.includes(3))
 							{
-								fill('yellow');
-								stroke('orange');
 								usedColors[i] = 3;
 								colorIsUnique = true;
 							}
@@ -371,8 +381,6 @@ function mousePressed()
 						case 4:
 							if(!usedColors.includes(4))
 							{
-								fill('orchid');
-								stroke('purple');
 								usedColors[i] = 4;
 								colorIsUnique = true;
 							}
@@ -381,20 +389,23 @@ function mousePressed()
 							break;
 					}
 				}
-				
+				let a = Math.sqrt(windowHeight * windowHeight + (windowWidth * windowWidth));
 				while(!newIsAway)
 				{
 					newIsAway = true;
-					newX = Math.random() * windowWidth;
-					newY = Math.random() * windowHeight;
-					newX2 = Math.random() * windowWidth;
-					newY2 = Math.random() * windowHeight;
-					for(j = 0; j < circleXPositions.length; j++)
+					newX = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
+					newY = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
+					newX2 = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
+					newY2 = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
+					for(j = 0; j < circleCount; j++)
 					{
-						if(dist(newX, newY, circleXPositions[j], circleYPositions[j]) > radius
-							&& dist(newX2, newY2, circleXPositions[j], circleYPositions[j]) > radius
-							&& dist(newX, newY, newX2, newY2) > windowHeight/8) newIsAway = true;
-						else newIsAway = false;
+						if(dist(newX, newY, circleXPositions[j], circleYPositions[j]) < radius * 4
+						|| dist(newX2, newY2, circleXPositions[j], circleYPositions[j]) < radius * 4
+						|| dist(newX, newY, newX2, newY2) < a/4) 
+						{
+							newIsAway = false;
+							break;
+						}
 					}
 					if(newIsAway)
 					{
@@ -417,14 +428,13 @@ function mousePressed()
 		{
 			if(dist(circleXPositions[i], circleYPositions[i], mouseX, mouseY) < radius)
 			{
-				circleClicked = i;
 				if(!drawingLine) 
 				{
+					circleClicked = i;
 					xStart = circleXPositions[i];
 					yStart = circleYPositions[i];
 					success = true;
-					drawingLine = true;
-					switch(usedColors[circleClicked/2])
+					switch(usedColors[parseInt(circleClicked/2)])
 					{
 						case 0:
 							fill('red');
@@ -435,7 +445,7 @@ function mousePressed()
 							stroke('green');
 							break;
 						case 2:
-							fill('mediumturquiose');
+							fill('mediumturquoise');
 							stroke('mediumblue');
 							break;
 						case 3:
@@ -443,13 +453,13 @@ function mousePressed()
 							stroke('orange');
 							break;
 						case 4:
-							if(!usedColors.includes(4))
 							fill('orchid');
 							stroke('purple');
 							break;
 						default:
 							break;
 					}
+					drawingLine = true;
 				}
 				else if(circleClicked % 2 == 1) 
 				{
@@ -488,14 +498,13 @@ function keyPressed()
 		{
 			if(dist(circleXPositions[i], circleYPositions[i], mouseX, mouseY) < radius)
 			{
-				circleClicked = i;
 				if(!drawingLine) 
 				{
+					circleClicked = i;
 					xStart = circleXPositions[i];
 					yStart = circleYPositions[i];
 					success = true;
-					drawingLine = true;
-					switch(usedColors[circleClicked/2])
+					switch(usedColors[parseInt(circleClicked/2)])
 					{
 						case 0:
 							fill('red');
@@ -506,7 +515,7 @@ function keyPressed()
 							stroke('green');
 							break;
 						case 2:
-							fill('mediumturquiose');
+							fill('mediumturquoise');
 							stroke('mediumblue');
 							break;
 						case 3:
@@ -521,6 +530,7 @@ function keyPressed()
 						default:
 							break;
 					}
+					drawingLine = true;
 				}
 				else if(circleClicked % 2 == 1) 
 				{
