@@ -212,15 +212,9 @@ function makeNewPair()
 		}
 	}
 }
-
-function preload()
-{
-	//backArrow = loadImage('assets/back-arrow.png');
-}
 	
 function setup()
 {
-	//image(backArrow, 0, 0);
 	settings = true;
 	drawingLine = false;
 	createCanvas(windowWidth, windowHeight);
