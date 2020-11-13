@@ -81,6 +81,7 @@ function createNewShape()
 		default:
 			break;
 	}
+	drawArrow();
 }
 
 function drawArrow()
@@ -99,17 +100,18 @@ function setup()
 	drawingLine = false;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
+	drawArrow();
 }
 
 function draw()
 {
-	drawArrow();
 }
 
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
 	if(settings) drawSettings();
+	drawArrow();
 }
 
 function mouseMoved()
@@ -289,6 +291,7 @@ function mouseMoved()
 						clear();
 						background(60);
 						rect(x - size/2, y - size/2, size, size);
+						drawArrow();
 					}
 					break;
 				case 2:
@@ -342,6 +345,7 @@ function mouseMoved()
 						clear();
 						background(60);
 						circle(x, y, size);
+						drawArrow();
 					}
 					break;
 				default:
@@ -400,7 +404,6 @@ function mousePressed()
 			cursor(ARROW);
 			gaming = true;
 			settings = false;
-			
 			createNewShape();
 		}
 	}

@@ -184,18 +184,23 @@ function setup()
 	settings = true;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
+	drawArrow();
 }
 
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
 	if(settings) drawSettings();
+	drawArrow();
 }
 
 function draw()
 {
-	if(gaming) drawGame();
-	drawArrow();
+	if(gaming) 
+	{
+		drawGame();
+		drawArrow();
+	}
 }
 
 function mouseMoved()

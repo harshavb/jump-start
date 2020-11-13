@@ -274,12 +274,14 @@ function setup()
 	drawingLine = false;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
+	drawArrow();
 }
 
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
 	if(settings) drawSettings();
+	drawArrow();
 }
 
 function draw()
@@ -290,9 +292,9 @@ function draw()
 		background(60);
 		drawCircles();
 		drawTimer();
+		drawArrow();
 	}
 	if(drawingLine) drawLine();
-	drawArrow();
 }
 
 function mouseMoved()
