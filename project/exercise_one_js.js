@@ -1,7 +1,7 @@
 let settings;
 let gaming;
 let mouseHoverChecker;
-//let backArrow;
+let backArrow;
 
 let circleCount;
 let circleXPositions;
@@ -166,12 +166,12 @@ function makeNewCircle(oldX, oldY, i)
 
 function preload()
 {
-	//backArrow = loadImage('assets/back-arrow.png');
+	backArrow = loadImage('assets/back-arrow.png');
 }
 	
 function setup()
 {
-	//image(backArrow, 0, 0);
+	image(backArrow, 0, 0);
 	score = 0;
 	lost = false;
 	settings = true;
