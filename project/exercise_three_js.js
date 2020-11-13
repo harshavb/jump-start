@@ -1,3 +1,5 @@
+let pacifico;
+let backArrow;
 let settings;
 let gaming;
 let mouseHoverChecker;
@@ -13,6 +15,12 @@ let x;
 let y;
 let drawChecks;
 let b;
+
+function preload()
+{
+	backArrow = loadImage('assets/back-arrow.svg');
+	pacifico = loadFont('assets/Pacifico-Regular.otf');
+}
 
 function drawSettings()
 {
@@ -77,6 +85,8 @@ function createNewShape()
 
 function setup()
 {
+	image(backArrow, 30, 30);
+	textFont(pacifico);
 	settings = true;
 	drawingLine = false;
 	createCanvas(windowWidth, windowHeight);

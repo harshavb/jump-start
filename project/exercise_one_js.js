@@ -1,21 +1,18 @@
+let pacifico;
+let backArrow;
 let settings;
 let gaming;
 let mouseHoverChecker;
-let backArrow;
-
 let circleCount;
 let circleXPositions;
 let circleYPositions;
 let circleXSpeeds;
 let circleYSpeeds;
 let circleSizes;
-
 let speed;
 let growthSpeed;
 let maxRadius;
-
 let lost;
-
 let score;
 
 function drawSettings()
@@ -166,12 +163,14 @@ function makeNewCircle(oldX, oldY, i)
 
 function preload()
 {
-	backArrow = loadImage('assets/back-arrow.png');
+	backArrow = loadImage('assets/back-arrow.svg');
+	pacifico = loadFont('assets/Pacifico-Regular.otf');
 }
 	
 function setup()
 {
-	image(backArrow, 0, 0);
+	image(backArrow, 30, 30);
+	textFont(pacifico);
 	score = 0;
 	lost = false;
 	settings = true;

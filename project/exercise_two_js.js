@@ -1,3 +1,5 @@
+let pacifico;
+let backArrow;
 let settings;
 let gaming;
 let mouseHoverChecker;
@@ -13,6 +15,12 @@ let xStart;
 let yStart;
 let score;
 let lost;
+
+function preload()
+{
+	backArrow = loadImage('assets/back-arrow.svg');
+	pacifico = loadFont('assets/Pacifico-Regular.otf');
+}
 
 function drawSettings()
 {
@@ -250,6 +258,8 @@ function makeNewPair()
 	
 function setup()
 {
+	image(backArrow, 30, 30);
+	textFont(pacifico);
 	score = 0;
 	lost = false;
 	settings = true;
