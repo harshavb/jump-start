@@ -166,10 +166,14 @@ function preload()
 	backArrow = loadImage('assets/back-arrow.svg');
 	pacifico = loadFont('assets/Pacifico-Regular.otf');
 }
+
+function drawArrow()
+{
+	image(backArrow, 30, 30);
+}
 	
 function setup()
 {
-	image(backArrow, 30, 30);
 	textFont(pacifico);
 	score = 0;
 	lost = false;
@@ -187,6 +191,7 @@ function windowResized()
 function draw()
 {
 	if(gaming) drawGame();
+	drawArrow();
 }
 
 function mouseMoved()

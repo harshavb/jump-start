@@ -255,10 +255,14 @@ function makeNewPair()
 		}
 	}
 }
+
+function drawArrow()
+{
+	image(backArrow, 30, 30);
+}
 	
 function setup()
 {
-	image(backArrow, 30, 30);
 	textFont(pacifico);
 	score = 0;
 	lost = false;
@@ -284,6 +288,7 @@ function draw()
 		drawTimer();
 	}
 	if(drawingLine) drawLine();
+	drawArrow();
 }
 
 function mouseMoved()

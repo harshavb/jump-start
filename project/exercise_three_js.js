@@ -83,9 +83,13 @@ function createNewShape()
 	}
 }
 
-function setup()
+function drawArrow()
 {
 	image(backArrow, 30, 30);
+}
+
+function setup()
+{
 	textFont(pacifico);
 	settings = true;
 	drawingLine = false;
@@ -95,6 +99,7 @@ function setup()
 
 function draw()
 {
+	drawArrow();
 }
 
 function windowResized()
