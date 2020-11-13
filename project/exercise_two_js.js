@@ -318,6 +318,11 @@ function mouseMoved()
 				mouseHoverChecker = 3;
 				cursor(HAND);
 			}
+			else if(mouseX > 30 && mouseX < 54 && mouseY > 30 && mouseY < 54)
+			{
+				mouseHoverChecker = 5;
+				cursor(HAND);
+			}
 			else
 			{	
 				mouseHoverChecker = 0;
@@ -357,11 +362,18 @@ function mouseMoved()
 			cursor(ARROW);
 		}
 	}
+	if(mouseX > 30 && mouseX < 54 && mouseY > 30 && mouseY < 54)
+	{
+		mouseHoverChecker = 5;
+		cursor(HAND);
+	}
 }
 
 function mousePressed()
 {
-	if(settings)
+	if(mouseHoverChecker == 5)
+		window.location.replace('home_page.html');
+	else if(settings)
 	{
 		switch(mouseHoverChecker)
 		{
