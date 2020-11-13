@@ -14,6 +14,10 @@ let speed;
 let growthSpeed;
 let maxRadius;
 
+let lost;
+
+let score;
+
 function drawSettings()
 {
 	background(60);
@@ -42,15 +46,50 @@ function drawSettings()
 	text('Hard', 107 * windowWidth/156, 5 * windowHeight/9);
 }
 
+function drawLost()
+{
+	background(60);
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	
+	fill(color('darkred'));
+	strokeWeight(8);
+	stroke('black');
+	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
+	
+	fill('#660000');
+	rect(3 * windowWidth/13, 4 * windowHeight/9, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	
+	fill(color('red'));
+	textAlign(CENTER);
+	textSize(72);
+	text('Game Over (Score: ' + score + ')', windowWidth/2, windowHeight/3);
+	textSize(48);
+	text('Try Again?', windowWidth/2, 5 * windowHeight/9);
+}
+
 function drawGame(difficulty)
 {
 	updateGame();
 	clear();
 	background(60);
+	fill(color('red'));
+	textAlign(CENTER);
+	textSize(72);
+	text('Score: ' + score, windowWidth/2, windowHeight/6);
 	for(i = 0; i < circleCount; i++)
 	{
-		if(circleSizes[i] >= maxRadius * 2) circleFailStart(i);
-		circle(circleXPositions[i], circleYPositions[i], circleSizes[i]);
+		if(circleSizes[i] >= maxRadius * 2) 
+		{
+			gaming = false;
+			lost = true;
+			clear();
+			drawLost();
+			break;
+		}
+		else circle(circleXPositions[i], circleYPositions[i], circleSizes[i]);
 	}
 }
 
@@ -92,13 +131,9 @@ function updateGame()
 	}
 }
 
-function circleFailStart(i)
-{
-	makeNewCircle(circleXPositions[i], circleYPositions[i], i);
-}
-
 function circleSuccessStart(i)
 {
+	score++;
 	makeNewCircle(circleXPositions[i], circleYPositions[i], i);
 }
 
@@ -137,6 +172,8 @@ function preload()
 function setup()
 {
 	//image(backArrow, 0, 0);
+	score = 0;
+	lost = false;
 	settings = true;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
@@ -199,6 +236,19 @@ function mouseMoved()
 			}
 		}
 		if(!isCircleHovered) cursor(ARROW);
+	}
+	if(lost)
+	{
+		if(mouseY > 4 * windowHeight/9 && mouseY < 29 * windowHeight/45 && mouseX > 3 * windowWidth/13 && mouseX < 10 * windowWidth/13)
+		{
+			mouseHoverChecker = 4;
+			cursor(HAND);
+		}
+		else
+		{
+			mouseHoverChecker = 0;
+			cursor(ARROW);
+		}
 	}
 }
 
@@ -268,6 +318,16 @@ function mousePressed()
 				circleSuccessStart(i);
 				break;
 			}
+		}
+	}
+	else if(lost)
+	{
+		if(mouseHoverChecker == 4)
+		{
+			lost = false;
+			settings = true;
+			clear();
+			drawSettings();
 		}
 	}
 }

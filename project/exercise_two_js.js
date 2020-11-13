@@ -11,6 +11,8 @@ let drawingLine;
 let circleClicked;
 let xStart;
 let yStart;
+let score;
+let lost;
 
 function drawSettings()
 {
@@ -40,13 +42,45 @@ function drawSettings()
 	text('Hard', 107 * windowWidth/156, 5 * windowHeight/9);
 }
 
+function drawLost()
+{
+	background(60);
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	
+	fill(color('darkred'));
+	strokeWeight(8);
+	stroke('black');
+	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
+	
+	fill('#660000');
+	rect(3 * windowWidth/13, 4 * windowHeight/9, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	
+	fill(color('red'));
+	textAlign(CENTER);
+	textSize(72);
+	text('Game Over (Score: ' + score + ')', windowWidth/2, windowHeight/3);
+	textSize(48);
+	text('Try Again?', windowWidth/2, 5 * windowHeight/9);
+}
+
 function drawTimer()
 {
 	if(frameCount % 60 == 0 && time > 0)
 		time--;
 	textAlign(CENTER, CENTER);
 	textSize(100);
-	text(time, width/2, height/7);
+	text(time, width/3, height/7);
+	if(time == 0)
+	{
+		gaming = false;
+		drawingLine = false;
+		lost = true;
+		clear();
+		drawLost();
+	}
 }
 
 function drawLine()
@@ -81,6 +115,7 @@ function drawLine()
 
 function pairSuccessStart()
 {
+	score++;
 	time = maxTime;
 	makeNewPair();
 }
@@ -215,6 +250,8 @@ function makeNewPair()
 	
 function setup()
 {
+	score = 0;
+	lost = false;
 	settings = true;
 	drawingLine = false;
 	createCanvas(windowWidth, windowHeight);
@@ -285,6 +322,19 @@ function mouseMoved()
 			}
 		}
 		if(!isCircleHovered) cursor(ARROW);
+	}
+	if(lost)
+	{
+		if(mouseY > 4 * windowHeight/9 && mouseY < 29 * windowHeight/45 && mouseX > 3 * windowWidth/13 && mouseX < 10 * windowWidth/13)
+		{
+			mouseHoverChecker = 4;
+			cursor(HAND);
+		}
+		else
+		{
+			mouseHoverChecker = 0;
+			cursor(ARROW);
+		}
 	}
 }
 
@@ -478,6 +528,16 @@ function mousePressed()
 			}
 		}
 		if(!success) drawingLine = false;
+	}
+	else if(lost)
+	{
+		if(mouseHoverChecker == 4)
+		{
+			lost = false;
+			settings = true;
+			clear();
+			drawSettings();
+		}
 	}
 }
 
