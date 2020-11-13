@@ -6,7 +6,7 @@ let mouseHoverChecker;
 
 function preload()
 {
-	//pacifico = loadFont('assets/Pacifico-Regular.otf'); 
+	pacifico = loadFont('assets/Pacifico-Regular.otf'); 
 }
 
 function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
@@ -53,6 +53,7 @@ function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 
 function setup() 
 {
+	textFont('Pacifico-Regular');
 	frames1 = 0;
 	frames2 = 0;
 	frames3 = 0;
