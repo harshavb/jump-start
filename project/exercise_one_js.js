@@ -169,6 +169,10 @@ function preload()
 
 function drawArrow()
 {
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
 	image(backArrow, 30, 30);
 }
 	
