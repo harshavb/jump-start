@@ -263,7 +263,7 @@ function mouseMoved()
 			cursor(ARROW);
 		}
 	}
-	if(mouseX > 30 && mouseX < 54 && mouseY > 30 && mouseY < 54)
+	if(mouseX > 54 && mouseX < 135 && mouseY > 54 && mouseY < 135)
 	{
 		mouseHoverChecker = 5;
 		cursor(HAND);
