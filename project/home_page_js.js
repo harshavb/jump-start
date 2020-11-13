@@ -53,7 +53,7 @@ function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 
 function setup() 
 {
-	textFont('Pacifico-Regular');
+	textFont(pacifico);
 	frames1 = 0;
 	frames2 = 0;
 	frames3 = 0;
