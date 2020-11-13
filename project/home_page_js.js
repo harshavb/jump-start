@@ -1,4 +1,4 @@
-//let pacifico;
+let pacifico;
 let frames1;
 let frames2;
 let frames3;
