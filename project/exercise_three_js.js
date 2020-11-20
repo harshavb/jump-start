@@ -64,6 +64,7 @@ function drawScore()
 	textSize(72);
 	strokeWeight(4);
 	text('Score: ' + score, windowWidth/2, windowHeight/7);
+	text('Strikes: ' + (3 - strikes), windowWidth/2, windowHeight/5);
 	strokeWeight(weight);
 }
 
