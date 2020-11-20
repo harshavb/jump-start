@@ -62,6 +62,7 @@ function drawScore()
 	drawingContext.shadowOffsetX = 2;
 	drawingContext.shadowOffsetY = 2;
 	textSize(72);
+	strokeWeight(4);
 	text('Score: ' + score, windowWidth/2, windowHeight/7);
 }
 
@@ -143,6 +144,7 @@ function setup()
 	settings = true;
 	lost = false;
 	drawingLine = false;
+	score = 0;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
 }
@@ -340,6 +342,7 @@ function mouseMoved()
 						strokeWeight(weight);
 						stroke('black');
 						clear();
+						drawScore();
 						background(60);
 						rect(x - size/2, y - size/2, size, size);
 						drawArrow();
@@ -402,6 +405,7 @@ function mouseMoved()
 						strokeWeight(weight);
 						stroke('black');
 						clear();
+						drawScore();
 						background(60);
 						circle(x, y, size);
 						drawArrow();
