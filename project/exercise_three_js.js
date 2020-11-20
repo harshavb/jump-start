@@ -88,9 +88,9 @@ function drawTimer()
 		time--;
 	textAlign(CENTER);
 	textSize(100);
-	scoredisplay = createGraphics(500, 500);
-	scoredisplay.text('Time: ' + time, width/2, height/7);
-	scoredisplay.text('Score: ' + score, width/2, height/6);
+	scoredisplay = createGraphics(windowWidth, windowHeight);
+	scoredisplay.text('Time: ' + time, windowWidth/2, windowHeight/7);
+	scoredisplay.text('Score: ' + score, windowWidth/2, windowHeight/6);
 	if(time == 0)
 	{
 		gaming = false;
@@ -161,6 +161,7 @@ function draw()
 	{
 		scoredisplay.remove();
 		drawTimer();
+		image(scoredisplay);
 	}
 }
 

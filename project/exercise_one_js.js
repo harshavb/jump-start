@@ -131,7 +131,7 @@ function updateGame()
 		else if(predictedYPosition + (circleSizes[i]/2) > windowHeight)
 		{
 			if(circleYSpeeds[i] > 0) circleYSpeeds[i] *= -1;
-			circleYPositions[i] += circleYSpeeds[i] - (circleSizes[i]/2 + predictedYPosition - windowWidth);
+			circleYPositions[i] += circleYSpeeds[i] - (circleSizes[i]/2 + predictedYPosition - windowHeight);
 		}
 		else circleYPositions[i] += circleYSpeeds[i];
 	}
@@ -252,11 +252,10 @@ function mouseMoved()
 			{
 				cursor(HAND);
 				isCircleHovered = true;
-				break;
+				return;
 			}
 		}
 		if(!isCircleHovered) cursor(ARROW);
-		return;
 	}
 	if(lost)
 	{

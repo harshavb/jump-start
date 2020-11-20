@@ -359,11 +359,10 @@ function mouseMoved()
 			{
 				cursor(HAND);
 				isCircleHovered = true;
-				break;
+				return;
 			}
 		}
 		if(!isCircleHovered) cursor(ARROW);
-		return;
 	}
 	if(lost)
 	{
