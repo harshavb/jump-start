@@ -181,7 +181,7 @@ function makeNewPair()
 	drawingContext.shadowOffsetX = 2;
 	drawingContext.shadowOffsetY = 2;
 	
-	radius *= 0.99;
+	radius *= 0.98;
 	
 	let newX;
 	let newY;
