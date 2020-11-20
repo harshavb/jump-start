@@ -15,6 +15,10 @@ let x;
 let y;
 let drawChecks;
 let b;
+let time;
+let score;
+let timer;
+let scoredisplay;
 
 function preload()
 {
@@ -52,8 +56,55 @@ function drawSettings()
 	drawArrow();
 }
 
+function drawLost()
+{
+	background(60);
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	
+	fill(color('darkred'));
+	strokeWeight(4);
+	stroke('black');
+	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
+	
+	fill('#660000');
+	rect(3 * windowWidth/13, 4 * windowHeight/9, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	
+	fill(color('red'));
+	textAlign(CENTER);
+	textSize(72);
+	text('Game Over (Score: ' + score + ')', windowWidth/2, windowHeight/3);
+	textSize(48);
+	text('Try Again?', windowWidth/2, 5 * windowHeight/9);
+	
+	drawArrow();
+}
+
+function drawTimer()
+{
+	if(frameCount % 60 == 0 && time > 0)
+		time--;
+	textAlign(CENTER);
+	textSize(100);
+	scoredisplay = createGraphics(500, 500);
+	scoredisplay.text('Time: ' + time, width/2, height/7);
+	scoredisplay.text('Score: ' + score, width/2, height/6);
+	if(time == 0)
+	{
+		gaming = false;
+		drawingLine = false;
+		lost = true;
+		clear();
+		drawLost();
+	}
+}
+
 function createNewShape()
 {
+	score++;
+	time = 0;
 	clear();
 	background(60);
 	strokeWeight(weight);
@@ -106,6 +157,11 @@ function setup()
 
 function draw()
 {
+	if(gaming)
+	{
+		scoredisplay.remove();
+		drawTimer();
+	}
 }
 
 function windowResized()
