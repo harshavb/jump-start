@@ -129,7 +129,7 @@ function draw()
 			break;
 	}
 	
-	drawHomePage(frames1, frames2, frames3, (windowWidth/2 - mouseX)/30, (windowHeight/2 - mouseY)/30);
+	drawHomePage(frames1, frames2, frames3, (windowWidth/2 - mouseX)/100, (windowHeight/2 - mouseY)/100);
 }
 
 function mouseClicked()
