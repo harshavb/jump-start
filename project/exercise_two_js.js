@@ -85,7 +85,7 @@ function drawTimer()
 	textAlign(CENTER);
 	textSize(72);
 	text('Time: ' + time, width/2, height/7);
-	text('Score: ' + score, width/2, height/6);
+	text('Score: ' + score, width/2, height/5);
 	if(time == 0)
 	{
 		gaming = false;
