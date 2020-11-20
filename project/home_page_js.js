@@ -46,7 +46,7 @@ function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 	
 	fill(25, 154, 75);
 	stroke(20, 102, 51);
-	strokeWeight(8);
+	strokeWeight(6);
 	textSize(72);
 	text('JumpStart', windowWidth/2, windowHeight/9);
 }
