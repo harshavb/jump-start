@@ -243,13 +243,10 @@ function makeNewPair()
 		newY = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
 		newX2 = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
 		newY2 = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
-		for(j = 0; j < circleCount; j++)
+		if(dist(newX, newY, newX2, newY2) < a/4) 
 		{
-			if(dist(newX, newY, newX2, newY2) < a/4) 
-			{
-				newIsAway = false;
-				break;
-			}
+			newIsAway = false;
+			break;
 		}
 		if(newIsAway)
 		{
@@ -491,13 +488,10 @@ function mousePressed()
 					newY = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
 					newX2 = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
 					newY2 = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
-					for(j = 0; j < circleCount; j++)
+					if(dist(newX, newY, newX2, newY2) < a/4) 
 					{
-						if(dist(newX, newY, newX2, newY2) < a/4) 
-						{
-							newIsAway = false;
-							break;
-						}
+						newIsAway = false;
+						break;
 					}
 					if(newIsAway)
 					{
