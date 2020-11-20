@@ -256,6 +256,7 @@ function mouseMoved()
 			}
 		}
 		if(!isCircleHovered) cursor(ARROW);
+		return;
 	}
 	if(lost)
 	{
