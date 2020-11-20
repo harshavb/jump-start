@@ -181,6 +181,8 @@ function makeNewPair()
 	drawingContext.shadowOffsetX = 2;
 	drawingContext.shadowOffsetY = 2;
 	
+	radius *= 0.99;
+	
 	let newX;
 	let newY;
 	let newX2;
@@ -394,17 +396,17 @@ function mousePressed()
 		{
 			case 1:
 				maxTime = 10;
-				radius = 75;
+				radius = 100;
 				circleCount = 8;
 				break;
 			case 2: 
 				maxTime = 5;
-				radius = 50;
+				radius = 75;
 				circleCount = 4;
 				break;
 			case 3:
 				maxTime = 3;
-				radius = 25;
+				radius = 50;
 				circleCount = 2;
 				break;
 			default:

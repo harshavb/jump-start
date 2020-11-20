@@ -55,6 +55,16 @@ function drawSettings()
 	drawArrow();
 }
 
+function drawScore()
+{
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	textSize(72);
+	text('Score: ' + score, windowWidth/2, windowHeight/7);
+}
+
 function drawLost()
 {
 	background(60);
@@ -85,6 +95,7 @@ function createNewShape()
 {
 	score++;
 	clear();
+	drawScore();
 	background(60);
 	strokeWeight(weight);
 	stroke('black');
@@ -114,6 +125,7 @@ function createNewShape()
 			break;
 	}
 	drawArrow();
+	drawScore();
 }
 
 function drawArrow()
@@ -137,12 +149,6 @@ function setup()
 
 function draw()
 {
-	if(gaming)
-	{
-		scoredisplay.remove();
-		drawTimer();
-		image(scoredisplay);
-	}
 }
 
 function windowResized()
