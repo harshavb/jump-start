@@ -98,6 +98,8 @@ function updateGame()
 {
 	let predictedXPosition;
 	let predictedYPosition;
+	
+	growthSpeed += 0.001;
 
 	for(i = 0; i < circleCount; i++)
 	{
