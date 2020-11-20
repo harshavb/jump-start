@@ -500,6 +500,7 @@ function mousePressed()
 		{
 			lost = false;
 			settings = true;
+			score = 0;
 			clear();
 			drawSettings();
 		}
