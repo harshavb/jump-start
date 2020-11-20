@@ -82,7 +82,7 @@ function drawTimer()
 {
 	if(frameCount % 60 == 0 && time > 0)
 		time--;
-	textAlign(CENTER, CENTER);
+	textAlign(CENTER);
 	textSize(100);
 	text(time, width/3, height/7);
 	if(time == 0)
@@ -275,7 +275,7 @@ function makeNewPair()
 function drawArrow()
 {
 	drawingContext.shadowColor = 'black';
-	drawingContext.shadowBlur = 0;
+	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
 	drawingContext.shadowOffsetY = 2;
 	image(backArrow, 30, 30);
@@ -376,7 +376,7 @@ function mouseMoved()
 			cursor(ARROW);
 		}
 	}
-	if(mouseX > 50 && mouseX < 175 && mouseY > 60 && mouseY < 175)
+	if(mouseX > 50 && mouseX < 150 && mouseY > 60 && mouseY < 150)
 	{
 		mouseHoverChecker = 5;
 		cursor(HAND);
@@ -412,7 +412,7 @@ function mousePressed()
 		
 		if(mouseHoverChecker > 0)
 		{
-			textAlign(CENTER, CENTER);
+			textAlign(CENTER);
 			textSize(100);
 			time = maxTime;
 			text(time, width/2, height/7);

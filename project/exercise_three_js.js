@@ -376,7 +376,7 @@ function mouseMoved()
 			}
 		}
 	}
-	if(mouseX > 50 && mouseX < 175 && mouseY > 60 && mouseY < 175)
+	if(mouseX > 50 && mouseX < 150 && mouseY > 60 && mouseY < 150)
 	{
 		mouseHoverChecker = 5;
 		cursor(HAND);

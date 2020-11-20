@@ -130,7 +130,7 @@ function updateGame()
 		}
 		else if(predictedYPosition + (circleSizes[i]/2) > windowHeight)
 		{
-			if(circleYSpeeds[i] > 0) circleYSpeed[i] *= -1;
+			if(circleYSpeeds[i] > 0) circleYSpeeds[i] *= -1;
 			circleYPositions[i] += circleYSpeeds[i] - windowHeight + circleYPositions[i] + (circleSizes[i]/2);
 		}
 		else circleYPositions[i] += circleYSpeeds[i];
@@ -270,7 +270,7 @@ function mouseMoved()
 			cursor(ARROW);
 		}
 	}
-	if(mouseX > 50 && mouseX < 175 && mouseY > 60 && mouseY < 175)
+	if(mouseX > 50 && mouseX < 150 && mouseY > 60 && mouseY < 150)
 	{
 		mouseHoverChecker = 5;
 		cursor(HAND);
