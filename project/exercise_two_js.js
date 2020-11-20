@@ -488,6 +488,7 @@ function mousePressed()
 				while(!newIsAway)
 				{
 					newIsAway = true;
+					console.log('bruh');
 					newX = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
 					newY = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
 					newX2 = Math.random() * (windowWidth - (4 * radius)) + (radius * 2);
