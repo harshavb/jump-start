@@ -329,7 +329,7 @@ function mouseMoved()
 							lost = true;
 							gaming = false;
 							drawLost();
-							return();
+							return;
 						}
 						drawingContext.shadowColor = 'black';
 						drawingContext.shadowBlur = 5;
