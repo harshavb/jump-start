@@ -245,9 +245,7 @@ function makeNewPair()
 		newY2 = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
 		for(j = 0; j < circleCount; j++)
 		{
-			if(dist(newX, newY, circleXPositions[j], circleYPositions[j]) < radius * 4
-			|| dist(newX2, newY2, circleXPositions[j], circleYPositions[j]) < radius * 4
-			|| dist(newX, newY, newX2, newY2) < a/4) 
+			if(dist(newX, newY, newX2, newY2) < a/4) 
 			{
 				newIsAway = false;
 				break;
@@ -495,9 +493,7 @@ function mousePressed()
 					newY2 = Math.random() * (windowHeight - (4 * radius)) + (radius * 2);
 					for(j = 0; j < circleCount; j++)
 					{
-						if(dist(newX, newY, circleXPositions[j], circleYPositions[j]) < radius * 4
-						|| dist(newX2, newY2, circleXPositions[j], circleYPositions[j]) < radius * 4
-						|| dist(newX, newY, newX2, newY2) < a/4) 
+						if(dist(newX, newY, newX2, newY2) < a/4) 
 						{
 							newIsAway = false;
 							break;
