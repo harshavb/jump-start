@@ -24,7 +24,7 @@ function drawSettings()
 	drawingContext.shadowOffsetY = 2;
 	
 	fill(40);
-	strokeWeight(6);
+	strokeWeight(4);
 	stroke('black');
 	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
 	
@@ -54,7 +54,7 @@ function drawLost()
 	drawingContext.shadowOffsetY = 2;
 	
 	fill(color('darkred'));
-	strokeWeight(6);
+	strokeWeight(4);
 	stroke('black');
 	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
 	
@@ -103,6 +103,9 @@ function updateGame()
 
 	for(i = 0; i < circleCount; i++)
 	{
+		cirlceXSpeeds[i] += 0.001;
+		circleYSpeeds[i] += 0.001;
+		
 		circleSizes[i] += growthSpeed;
 		
 		predictedXPosition = circleXPositions[i] + circleXSpeeds[i];
@@ -110,24 +113,24 @@ function updateGame()
 		
 		if(predictedXPosition - (circleSizes[i]/2) < 0) 
 		{
-			circleXSpeeds[i] *= -1;
+			if(circleXSpeeds[i] < 0) circleXSpeeds[i] *= -1;
 			circleXPositions[i] += circleXSpeeds[i] - circleXPositions[i] + (circleSizes[i]/2);
 		}
 		else if(predictedXPosition + (circleSizes[i]/2) > windowWidth)
 		{
-			circleXSpeeds[i] *= -1;
+			if(circleXSpeeds[i] > 0) circleXSpeeds[i] *= -1;
 			circleXPositions[i] += circleXSpeeds[i] - windowWidth + circleXPositions[i] + (circleSizes[i]/2);
 		}
 		else circleXPositions[i] += circleXSpeeds[i];
 		
 		if(predictedYPosition - (circleSizes[i]/2) < 0) 
 		{
-			circleYSpeeds[i] *= -1;
+			if(circleYSpeeds[i] < 0) circleYSpeeds[i] *= -1;
 			circleYPositions[i] += circleYSpeeds[i] - circleYPositions[i] + (circleSizes[i]/2);
 		}
 		else if(predictedYPosition + (circleSizes[i]/2) > windowHeight)
 		{
-			circleYSpeeds[i] *= -1;
+			if(circleYSpeeds[i] > 0) circleYSpeed[i] *= -1;
 			circleYPositions[i] += circleYSpeeds[i] - windowHeight + circleYPositions[i] + (circleSizes[i]/2);
 		}
 		else circleYPositions[i] += circleYSpeeds[i];
@@ -350,6 +353,7 @@ function mousePressed()
 		{
 			lost = false;
 			settings = true;
+			score = 0;
 			clear();
 			drawSettings();
 		}
