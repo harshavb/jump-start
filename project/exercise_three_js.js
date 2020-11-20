@@ -15,10 +15,9 @@ let x;
 let y;
 let drawChecks;
 let b;
-let time;
 let score;
-let timer;
-let scoredisplay;
+let strikes;
+let lost;
 
 function preload()
 {
@@ -82,29 +81,9 @@ function drawLost()
 	drawArrow();
 }
 
-function drawTimer()
-{
-	if(frameCount % 60 == 0 && time > 0)
-		time--;
-	textAlign(CENTER);
-	textSize(100);
-	scoredisplay = createGraphics(windowWidth, windowHeight);
-	scoredisplay.text('Time: ' + time, windowWidth/2, windowHeight/7);
-	scoredisplay.text('Score: ' + score, windowWidth/2, windowHeight/6);
-	if(time == 0)
-	{
-		gaming = false;
-		drawingLine = false;
-		lost = true;
-		clear();
-		drawLost();
-	}
-}
-
 function createNewShape()
 {
 	score++;
-	time = 0;
 	clear();
 	background(60);
 	strokeWeight(weight);
@@ -150,6 +129,7 @@ function setup()
 {
 	textFont(pacifico);
 	settings = true;
+	lost = false;
 	drawingLine = false;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
@@ -337,6 +317,14 @@ function mouseMoved()
 					}
 					if(!inbounds)
 					{
+						strikes--;
+						if(strikes == 0)
+						{
+							lost = true;
+							gaming = false;
+							drawLost();
+							return();
+						}
 						drawingContext.shadowColor = 'black';
 						drawingContext.shadowBlur = 5;
 						drawingContext.shadowOffsetX = 2;
@@ -391,6 +379,14 @@ function mouseMoved()
 					}
 					else
 					{
+						strikes--;
+						if(strikes == 0)
+						{
+							lost = true;
+							gaming = false;
+							drawLost();
+							return();
+						}
 						drawingContext.shadowColor = 'black';
 						drawingContext.shadowBlur = 5;
 						drawingContext.shadowOffsetX = 2;
@@ -433,6 +429,19 @@ function mouseMoved()
 			}
 		}
 	}
+	if(lost)
+	{
+		if(mouseY > 4 * windowHeight/9 && mouseY < 29 * windowHeight/45 && mouseX > 3 * windowWidth/13 && mouseX < 10 * windowWidth/13)
+		{
+			mouseHoverChecker = 4;
+			cursor(HAND);
+		}
+		else
+		{
+			mouseHoverChecker = 0;
+			cursor(ARROW);
+		}
+	}
 	if(mouseX > 50 && mouseX < 150 && mouseY > 60 && mouseY < 150)
 	{
 		mouseHoverChecker = 5;
@@ -449,12 +458,15 @@ function mousePressed()
 		switch(mouseHoverChecker)
 		{
 			case 1:
+				strikes = 3;
 				weight = 30;
 				break;
 			case 2: 
+				strikes = 3;
 				weight = 20;
 				break;
 			case 3:
+				strikes = 3;
 				weight = 10;
 				break;
 			default:
@@ -469,6 +481,16 @@ function mousePressed()
 			gaming = true;
 			settings = false;
 			createNewShape();
+		}
+	}
+	else if(lost)
+	{
+		if(mouseHoverChecker == 4)
+		{
+			lost = false;
+			settings = true;
+			clear();
+			drawSettings();
 		}
 	}
 }
