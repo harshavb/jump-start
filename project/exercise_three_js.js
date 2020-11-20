@@ -31,7 +31,7 @@ function drawSettings()
 	drawingContext.shadowOffsetY = 2;
 	
 	fill(40);
-	strokeWeight(8);
+	strokeWeight(4);
 	stroke('black');
 	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
 	
@@ -48,6 +48,8 @@ function drawSettings()
 	text('Easy', 49 * windowWidth/156, 5 * windowHeight/9);
 	text('Medium', windowWidth/2, 5 * windowHeight/9);
 	text('Hard', 107 * windowWidth/156, 5 * windowHeight/9);
+	
+	drawArrow();
 }
 
 function createNewShape()
@@ -100,7 +102,6 @@ function setup()
 	drawingLine = false;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
-	drawArrow();
 }
 
 function draw()
@@ -111,7 +112,6 @@ function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
 	if(settings) drawSettings();
-	drawArrow();
 }
 
 function mouseMoved()
@@ -376,7 +376,7 @@ function mouseMoved()
 			}
 		}
 	}
-	if(mouseX > 30 && mouseX < 54 && mouseY > 30 && mouseY < 54)
+	if(mouseX > 50 && mouseX < 175 && mouseY > 60 && mouseY < 175)
 	{
 		mouseHoverChecker = 5;
 		cursor(HAND);
