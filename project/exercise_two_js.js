@@ -93,6 +93,7 @@ function drawTimer()
 		lost = true;
 		clear();
 		drawLost();
+		score = 0;
 	}
 }
 
