@@ -103,7 +103,7 @@ function updateGame()
 
 	for(i = 0; i < circleCount; i++)
 	{
-		cirlceXSpeeds[i] += 0.001;
+		circleXSpeeds[i] += 0.001;
 		circleYSpeeds[i] += 0.001;
 		
 		circleSizes[i] += growthSpeed;
