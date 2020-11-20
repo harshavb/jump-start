@@ -24,7 +24,7 @@ function drawSettings()
 	drawingContext.shadowOffsetY = 2;
 	
 	fill(40);
-	strokeWeight(8);
+	strokeWeight(6);
 	stroke('black');
 	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
 	
@@ -41,6 +41,8 @@ function drawSettings()
 	text('Easy', 49 * windowWidth/156, 5 * windowHeight/9);
 	text('Medium', windowWidth/2, 5 * windowHeight/9);
 	text('Hard', 107 * windowWidth/156, 5 * windowHeight/9);
+	
+	drawArrow();
 }
 
 function drawLost()
@@ -52,7 +54,7 @@ function drawLost()
 	drawingContext.shadowOffsetY = 2;
 	
 	fill(color('darkred'));
-	strokeWeight(8);
+	strokeWeight(6);
 	stroke('black');
 	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
 	
@@ -65,6 +67,8 @@ function drawLost()
 	text('Game Over (Score: ' + score + ')', windowWidth/2, windowHeight/3);
 	textSize(48);
 	text('Try Again?', windowWidth/2, 5 * windowHeight/9);
+	
+	drawArrow();
 }
 
 function drawGame(difficulty)
@@ -184,14 +188,12 @@ function setup()
 	settings = true;
 	createCanvas(windowWidth, windowHeight);
 	drawSettings();
-	drawArrow();
 }
 
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
 	if(settings) drawSettings();
-	drawArrow();
 }
 
 function draw()
