@@ -97,7 +97,6 @@ function createNewShape()
 {
 	score++;
 	clear();
-	drawScore();
 	background(60);
 	strokeWeight(weight);
 	stroke('black');
@@ -343,9 +342,9 @@ function mouseMoved()
 						strokeWeight(weight);
 						stroke('black');
 						clear();
-						drawScore();
 						background(60);
 						rect(x - size/2, y - size/2, size, size);
+						drawScore();
 						drawArrow();
 					}
 					break;
@@ -406,9 +405,9 @@ function mouseMoved()
 						strokeWeight(weight);
 						stroke('black');
 						clear();
-						drawScore();
 						background(60);
 						circle(x, y, size);
+						drawScore();
 						drawArrow();
 					}
 					break;
