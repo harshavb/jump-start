@@ -113,10 +113,22 @@ function createNewShape()
 			rect(x - size/2, y - size/2, size, size);
 			break;
 		case 1:
-			shape = 1;
+			/*shape = 1;
 			let shift = size/(Math.sqrt(3));
 			triangle(x, y - shift, x - shift, y + shift, x + shift, y + shift);
-			break;
+			break;*/
+			if(Math.floor(Math.random() * 2) > 1) 
+			{
+				shape = 0;
+				rect(x - size/2, y - size/2, size, size);
+				break;
+			} else
+			{
+				shape = 2;
+				b = (size/2)/(Math.sqrt(2));
+				circle(x, y, size);
+				break;
+			}
 		case 2:
 			shape = 2;
 			b = (size/2)/(Math.sqrt(2));
