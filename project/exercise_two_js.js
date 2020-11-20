@@ -83,7 +83,7 @@ function drawTimer()
 	if(frameCount % 60 == 0 && time > 0)
 		time--;
 	textAlign(CENTER);
-	textSize(100);
+	textSize(72);
 	text('Time: ' + time, width/2, height/7);
 	text('Score: ' + score, width/2, height/6);
 	if(time == 0)
