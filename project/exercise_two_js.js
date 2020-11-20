@@ -246,7 +246,7 @@ function makeNewPair()
 		if(dist(newX, newY, newX2, newY2) < a/4) 
 		{
 			newIsAway = false;
-			break;
+			continue;
 		}
 		if(newIsAway)
 		{
@@ -491,7 +491,7 @@ function mousePressed()
 					if(dist(newX, newY, newX2, newY2) < a/4) 
 					{
 						newIsAway = false;
-						break;
+						continue;
 					}
 					if(newIsAway)
 					{
