@@ -119,7 +119,7 @@ function updateGame()
 		else if(predictedXPosition + (circleSizes[i]/2) > windowWidth)
 		{
 			if(circleXSpeeds[i] > 0) circleXSpeeds[i] *= -1;
-			circleXPositions[i] += circleXSpeeds[i] - windowWidth + circleXPositions[i] + (circleSizes[i]/2);
+			circleXPositions[i] += circleXSpeeds[i] - (circleSizes[i]/2 + predictedXPosition - windowWidth)
 		}
 		else circleXPositions[i] += circleXSpeeds[i];
 		
@@ -131,7 +131,7 @@ function updateGame()
 		else if(predictedYPosition + (circleSizes[i]/2) > windowHeight)
 		{
 			if(circleYSpeeds[i] > 0) circleYSpeeds[i] *= -1;
-			circleYPositions[i] += circleYSpeeds[i] - windowHeight + circleYPositions[i] + (circleSizes[i]/2);
+			circleYPositions[i] += circleYSpeeds[i] - (circleSizes[i]/2 + predictedYPosition - windowWidth);
 		}
 		else circleYPositions[i] += circleYSpeeds[i];
 	}
