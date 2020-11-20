@@ -397,17 +397,17 @@ function mousePressed()
 		{
 			case 1:
 				maxTime = 10;
-				radius = 100;
+				radius = 65;
 				circleCount = 8;
 				break;
 			case 2: 
 				maxTime = 5;
-				radius = 75;
+				radius = 50;
 				circleCount = 4;
 				break;
 			case 3:
 				maxTime = 3;
-				radius = 50;
+				radius = 35;
 				circleCount = 2;
 				break;
 			default:
