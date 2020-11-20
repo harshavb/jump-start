@@ -134,6 +134,12 @@ function pairSuccessStart()
 
 function drawCircles()
 {
+	background(60);
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	
 	for(i = 0; i < parseInt(circleCount/2); i++)
 	{
 		switch(usedColors[i])
@@ -168,6 +174,12 @@ function drawCircles()
 
 function makeNewPair()
 {
+	background(60);
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	
 	let newX;
 	let newY;
 	let newX2;
