@@ -125,7 +125,6 @@ function drawLost()
 
 function createNewShape()
 {
-	score++;
 	clear();
 	background(60);
 	strokeWeight(weight);
@@ -493,6 +492,7 @@ function mouseMoved()
 					clear();
 					background(60);
 					createNewShape();
+					score++;
 				}
 			}
 		}
