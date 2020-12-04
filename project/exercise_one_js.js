@@ -247,6 +247,16 @@ function mouseMoved()
 {
 	if(instructions)
 	{
+		if(mouseY > 4 * windowHeight/9 && mouseY < 29 * windowHeight/45 && mouseX > 3 * windowWidth/13 && mouseX < 10 * windowWidth/13)
+		{
+			mouseHoverChecker = 6;
+			cursor(HAND);
+		}
+		else
+		{
+			mouseHoverChecker = 0;
+			cursor(ARROW);
+		}
 	}
 	if(settings)
 	{
