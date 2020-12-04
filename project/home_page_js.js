@@ -38,11 +38,11 @@ function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 	textAlign(CENTER);
 	fill('white');
 	textSize(2 * frames1 + 48);
-	text('Exercise One', windowWidth/5 + parallaxX, 3 * windowHeight/8 + parallaxY);
+	text('Exercise One: Circle Popping', windowWidth/5 + parallaxX, 3 * windowHeight/8 + parallaxY);
 	textSize(2 * frames2 + 48);
-	text('Exercise Two', 4 * windowWidth/5 + parallaxX, 15 * windowHeight/29 + parallaxY);
+	text('Exercise Two: Matching Pairs', 4 * windowWidth/5 + parallaxX, 15 * windowHeight/29 + parallaxY);
 	textSize(2 * frames3 + 48);
-	text('Exercise Three', windowWidth/5 + parallaxX, 27 * windowHeight/41 + parallaxY);
+	text('Exercise Three: Tracing Shapes', windowWidth/5 + parallaxX, 27 * windowHeight/41 + parallaxY);
 	
 	fill(25, 154, 75);
 	stroke(20, 102, 51);
