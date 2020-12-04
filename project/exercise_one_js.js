@@ -222,7 +222,6 @@ function setup()
 	instructions = true;
 	createCanvas(windowWidth, windowHeight);
 	drawInstructions();
-	drawSettings();
 }
 
 function windowResized()
