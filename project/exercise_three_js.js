@@ -55,6 +55,33 @@ function drawSettings()
 	drawArrow();
 }
 
+function drawInstructions()
+{
+	background(60);
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	
+	fill(40);
+	strokeWeight(4);
+	stroke('black');
+	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
+	
+	fill(20);
+	rect(3 * windowWidth/13, 4 * windowHeight/9, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	
+	fill(100);
+	textAlign(CENTER);
+	textSize(72);
+	text('Exercise 3: Tracing Shapes', windowWidth/2, windowHeight/3);
+	textSize(48);
+	text('In this exercise, various shapes will appear on your screen. Trace the edges without losing 3 strikes.', windowWidth/2, 4 * windowHeight/9, windowWidth/4);
+	text('Start', windowWidth/2, 5 * windowHeight/9);
+	
+	drawArrow();
+}
+
 function drawScore()
 {
 	drawingContext.shadowColor = 'black';
@@ -154,12 +181,13 @@ function drawArrow()
 function setup()
 {
 	textFont(pacifico);
-	settings = true;
+	settings = false;
 	lost = false;
 	drawingLine = false;
+	instructions = true;
 	score = 0;
 	createCanvas(windowWidth, windowHeight);
-	drawSettings();
+	drawInstructions();
 }
 
 function draw()
@@ -170,10 +198,15 @@ function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
 	if(settings) drawSettings();
+	if(instructions) drawInstructions();
+	if(lost) drawLost();
 }
 
 function mouseMoved()
 {
+	if(instructions)
+	{
+	}
 	if(settings)
 	{
 		if(mouseY > 4 * windowHeight/9 && mouseY < 29 * windowHeight/45)
@@ -476,6 +509,16 @@ function mousePressed()
 {
 	if(mouseHoverChecker == 5)
 		window.location.replace('home_page.html');
+	else if(instructions)
+	{
+		if(mouseHoverChecker == 6)
+		{
+			instructions = false;
+			settings = true;
+			clear();
+			drawSettings();
+		}
+	}
 	else if(settings)
 	{
 		switch(mouseHoverChecker)

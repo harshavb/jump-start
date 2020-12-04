@@ -229,6 +229,7 @@ function windowResized()
 	resizeCanvas(windowWidth, windowHeight);
 	if(instructions) drawInstructions();
 	if(settings) drawSettings();
+	if(lost) drawLost();
 }
 
 function draw()
