@@ -69,7 +69,7 @@ function drawInstructions()
 	rect(windowWidth/5, windowHeight/8, 3 * windowWidth/5, 3 * windowHeight/4, windowWidth/20);
 	
 	fill(20);
-	rect(3 * windowWidth/13, 9 * windowHeight/15, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	rect(3 * windowWidth/13, 3 * windowHeight/5, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
 	
 	fill(100);
 	textAlign(CENTER);
@@ -207,7 +207,7 @@ function mouseMoved()
 {
 	if(instructions)
 	{
-		if(mouseY > 4 * windowHeight/9 && mouseY < 29 * windowHeight/45 && mouseX > 3 * windowWidth/13 && mouseX < 10 * windowWidth/13)
+		if(mouseY > 3 * windowHeight/5 && mouseY < 4 * windowHeight/5 && mouseX > 3 * windowWidth/13 && mouseX < 10 * windowWidth/13)
 		{
 			mouseHoverChecker = 6;
 			cursor(HAND);
