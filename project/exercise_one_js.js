@@ -2,6 +2,7 @@ let pacifico;
 let backArrow;
 let settings;
 let gaming;
+let instructions;
 let mouseHoverChecker;
 let circleCount;
 let circleXPositions;
@@ -41,6 +42,33 @@ function drawSettings()
 	text('Easy', 49 * windowWidth/156, 5 * windowHeight/9);
 	text('Medium', windowWidth/2, 5 * windowHeight/9);
 	text('Hard', 107 * windowWidth/156, 5 * windowHeight/9);
+	
+	drawArrow();
+}
+
+function drawInstructions()
+{
+	background(60);
+	drawingContext.shadowColor = 'black';
+	drawingContext.shadowBlur = 5;
+	drawingContext.shadowOffsetX = 2;
+	drawingContext.shadowOffsetY = 2;
+	
+	fill(40);
+	strokeWeight(4);
+	stroke('black');
+	rect(windowWidth/5, windowHeight/5, 3 * windowWidth/5, 3 * windowHeight/6, windowWidth/20);
+	
+	fill(20);
+	rect(3 * windowWidth/13, 4 * windowHeight/9, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	
+	fill(100);
+	textAlign(CENTER);
+	textSize(72);
+	text('Exercise 1: Circle Popping', windowWidth/2, windowHeight/3);
+	textSize(48);
+	text('In this exercise, a bunch of floating circles will move around your screen. Simply click on the circles before the grow too big! (Or use Z and X)', windowWidth/2, 4 * windowHeight/9)
+	text('Start', windowWidth/2, 5 * windowHeight/9);
 	
 	drawArrow();
 }
@@ -190,14 +218,17 @@ function setup()
 	textFont(pacifico);
 	score = 0;
 	lost = false;
-	settings = true;
+	settings = false;
+	instructions = true;
 	createCanvas(windowWidth, windowHeight);
+	drawInstructions();
 	drawSettings();
 }
 
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
+	if(instructions) drawInstructions();
 	if(settings) drawSettings();
 }
 
@@ -212,6 +243,9 @@ function draw()
 
 function mouseMoved()
 {
+	if(instructions)
+	{
+	}
 	if(settings)
 	{
 		if(mouseY > 4 * windowHeight/9 && mouseY < 29 * windowHeight/45)
@@ -281,6 +315,16 @@ function mousePressed()
 {
 	if(mouseHoverChecker == 5)
 		window.location.replace('home_page.html');
+	else if(instructions)
+	{
+		if(mouseHoverChecker == 6)
+		{
+			instructions = false;
+			settings = true;
+			clear();
+			drawSettings();
+		}
+	}
 	else if(settings)
 	{
 		switch(mouseHoverChecker)
