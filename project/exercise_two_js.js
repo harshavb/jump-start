@@ -67,7 +67,7 @@ function drawInstructions()
 	rect(windowWidth/5, windowHeight/8, 3 * windowWidth/5, 3 * windowHeight/4, windowWidth/20);
 	
 	fill(20);
-	rect(3 * windowWidth/13, 8 * windowHeight/15, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	rect(3 * windowWidth/13, 9 * windowHeight/15, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
 	
 	fill(100);
 	textAlign(CENTER);
@@ -77,7 +77,7 @@ function drawInstructions()
 	rectMode(CENTER);
 	text('In this exercise, colored circles will appear on your screen. Click on a circle (or use Z and X) and match it with its colored pair.', windowWidth/2, 5 * windowHeight/9, windowWidth/2, windowHeight/2);
 	rectMode(CORNER);
-	text('Start', windowWidth/2, 19 * windowHeight/30);
+	text('Start', windowWidth/2, 32 * windowHeight/45);
 	
 	drawArrow();
 }
