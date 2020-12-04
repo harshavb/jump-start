@@ -75,7 +75,7 @@ function drawInstructions()
 	text('Exercise 2: Matching Pairs', windowWidth/2, windowHeight/3);
 	textSize(48);
 	rectMode(CENTER);
-	text('In this exercise, colored circles will appear on your screen. Click on a circle (or use Z and X) and match it with its colored pair.', windowWidth/2, 4 * windowHeight/9, windowWidth/4, windowHeight);
+	text('In this exercise, colored circles will appear on your screen. Click on a circle (or use Z and X) and match it with its colored pair.', windowWidth/2, 4 * windowHeight/9, windowWidth/3, windowHeight);
 	rectMode(CORNER);
 	text('Start', windowWidth/2, 5 * windowHeight/9);
 	
