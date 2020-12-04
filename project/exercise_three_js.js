@@ -537,15 +537,15 @@ function mousePressed()
 		{
 			case 1:
 				strikes = 3;
-				weight = 30;
+				weight = 50;
 				break;
 			case 2: 
 				strikes = 3;
-				weight = 20;
+				weight = 40;
 				break;
 			case 3:
 				strikes = 3;
-				weight = 10;
+				weight = 30;
 				break;
 			default:
 				break;
