@@ -60,12 +60,12 @@ function drawInstructions()
 	rect(windowWidth/5, windowHeight/8, 3 * windowWidth/5, 3 * windowHeight/4, windowWidth/20);
 	
 	fill(20);
-	rect(3 * windowWidth/13, 7 * windowHeight/9, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	rect(3 * windowWidth/13, 2 * windowHeight/3, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
 	
 	fill(100);
 	textAlign(CENTER);
 	textSize(72);
-	text('Exercise 1: Circle Popping', windowWidth/2, windowHeight/6);
+	text('Exercise 1: Circle Popping', windowWidth/2, windowHeight/5);
 	textSize(48);
 	rectMode(CENTER);
 	text('In this exercise, a bunch of floating circles will move around your screen. Simply click on the circles before the grow too big! (Or use Z and X)', windowWidth/2, 5 * windowHeight/9, windowWidth/2, windowHeight/2);

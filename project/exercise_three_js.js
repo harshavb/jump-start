@@ -69,12 +69,12 @@ function drawInstructions()
 	rect(windowWidth/5, windowHeight/8, 3 * windowWidth/5, 3 * windowHeight/4, windowWidth/20);
 	
 	fill(20);
-	rect(3 * windowWidth/13, 7 * windowHeight/9, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
+	rect(3 * windowWidth/13, 2 * windowHeight/3, 7 * windowWidth/13, windowHeight/5, windowWidth/30);
 	
 	fill(100);
 	textAlign(CENTER);
 	textSize(72);
-	text('Exercise 3: Tracing Shapes', windowWidth/2, windowHeight/6);
+	text('Exercise 3: Tracing Shapes', windowWidth/2, windowHeight/5);
 	textSize(48);
 	rectMode(CENTER);
 	text('In this exercise, various shapes will appear on your screen. Trace the edges without losing 3 strikes.', windowWidth/2, 5 * windowHeight/9, windowWidth/2, windowHeight/2);
