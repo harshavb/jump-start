@@ -67,7 +67,7 @@ function drawInstructions()
 	textSize(72);
 	text('Exercise 1: Circle Popping', windowWidth/2, windowHeight/3);
 	textSize(48);
-	text('In this exercise, a bunch of floating circles will move around your screen. Simply click on the circles before the grow too big! (Or use Z and X)', windowWidth/2, 4 * windowHeight/9)
+	text('In this exercise, a bunch of floating circles will move around your screen. Simply click on the circles before the grow too big! (Or use Z and X)', windowWidth/2, 4 * windowHeight/9, windowWidth/4);
 	text('Start', windowWidth/2, 5 * windowHeight/9);
 	
 	drawArrow();
