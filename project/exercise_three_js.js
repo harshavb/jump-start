@@ -497,7 +497,7 @@ function mouseMoved()
 				default:
 					break;
 			}
-			if(dist(mouseX, mouseY, mouseXStartPosition, mouseYStartPosition) < 8)
+			if(dist(mouseX, mouseY, mouseXStartPosition, mouseYStartPosition) < 16)
 			{
 				let drawCheck = true;
 				for(i = 0; i < 8; i++)
@@ -514,13 +514,13 @@ function mouseMoved()
 					drawingContext.shadowOffsetX = 2;
 					drawingContext.shadowOffsetY = 2;
 		
+					score++;
 					fill(100);
 					strokeWeight(weight);
 					stroke('black');
 					clear();
 					background(60);
 					createNewShape();
-					score++;
 				}
 			}
 		}
