@@ -597,6 +597,7 @@ function mousePressed()
 			lost = false;
 			settings = true;
 			score = 0;
+			strikes = 3;
 			clear();
 			drawSettings();
 		}
