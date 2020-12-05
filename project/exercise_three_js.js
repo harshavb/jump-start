@@ -405,6 +405,7 @@ function mouseMoved()
 							lost = true;
 							gaming = false;
 							drawLost();
+							drawingLine = false;
 							return;
 						}
 						
@@ -474,6 +475,7 @@ function mouseMoved()
 							lost = true;
 							gaming = false;
 							drawLost();
+							drawingLine = false;
 							return;
 						}
 						
