@@ -19,15 +19,20 @@ let score;
 let strikes;
 let lost;
 
+//load back arrow and font
 function preload()
 {
 	backArrow = loadImage('assets/back-arrow.svg');
 	pacifico = loadFont('assets/Pacifico-Regular.otf');
 }
 
+
+//draws several boxes and text within the boxes to display settings
 function drawSettings()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -55,9 +60,12 @@ function drawSettings()
 	drawArrow();
 }
 
+//draws several boxes with text within them to display instructions
 function drawInstructions()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -84,8 +92,10 @@ function drawInstructions()
 	drawArrow();
 }
 
+//displays the current score and strikes
 function drawScore()
 {
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -97,9 +107,12 @@ function drawScore()
 	strokeWeight(weight);
 }
 
+//displays the game over screen using rectangles and text
 function drawLost()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -123,42 +136,31 @@ function drawLost()
 	drawArrow();
 }
 
+//creates a new shape on the screen
 function createNewShape()
 {
 	clear();
 	background(60);
 	strokeWeight(weight);
 	stroke('black');
+	
+	//drop shadow effect
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
 	drawingContext.shadowOffsetY = 2;
+	
 	x = Math.random() * (windowWidth - windowWidth/2) + (windowWidth/4);
 	y = Math.random() * (windowHeight - windowHeight/2) + (windowHeight/4);
 	size = Math.random() * windowWidth/8 + windowWidth/10;
-	switch(Math.floor(Math.random() * 3))
+	
+	//picks between circle and square
+	switch(Math.floor(Math.random() * 2))
 	{
 		case 0:
 			shape = 0;
 			rect(x - size/2, y - size/2, size, size);
 			break;
 		case 1:
-			/*shape = 1;
-			let shift = size/(Math.sqrt(3));
-			triangle(x, y - shift, x - shift, y + shift, x + shift, y + shift);
-			break;*/
-			if(Math.floor(Math.random() * 2) > 1) 
-			{
-				shape = 0;
-				rect(x - size/2, y - size/2, size, size);
-				break;
-			} else
-			{
-				shape = 2;
-				b = (size/2)/(Math.sqrt(2));
-				circle(x, y, size);
-				break;
-			}
-		case 2:
 			shape = 2;
 			b = (size/2)/(Math.sqrt(2));
 			circle(x, y, size);
@@ -170,6 +172,7 @@ function createNewShape()
 	drawScore();
 }
 
+//draws the back arrow
 function drawArrow()
 {
 	drawingContext.shadowColor = 'black';
@@ -179,6 +182,7 @@ function drawArrow()
 	image(backArrow, 30, 30);
 }
 
+//initializes instructions
 function setup()
 {
 	textFont(pacifico);
@@ -189,10 +193,6 @@ function setup()
 	score = 0;
 	createCanvas(windowWidth, windowHeight);
 	drawInstructions();
-}
-
-function draw()
-{
 }
 
 function windowResized()
