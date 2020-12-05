@@ -16,9 +16,19 @@ let maxRadius;
 let lost;
 let score;
 
+//load back arrow and font
+function preload()
+{
+	backArrow = loadImage('assets/back-arrow.svg');
+	pacifico = loadFont('assets/Pacifico-Regular.otf');
+}
+
+//draws several boxes and text within the boxes to display settings
 function drawSettings()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -46,9 +56,12 @@ function drawSettings()
 	drawArrow();
 }
 
+//draws several boxes with text within them to display instructions
 function drawInstructions()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -75,9 +88,12 @@ function drawInstructions()
 	drawArrow();
 }
 
+//displays the game over screen using rectangles and text
 function drawLost()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -101,6 +117,7 @@ function drawLost()
 	drawArrow();
 }
 
+//Draws all circles at their positions, along with the score
 function drawGame(difficulty)
 {
 	updateGame();
@@ -124,6 +141,7 @@ function drawGame(difficulty)
 	}
 }
 
+//updates the positions of the circles
 function updateGame()
 {
 	let predictedXPosition;
@@ -167,12 +185,14 @@ function updateGame()
 	}
 }
 
+//run whenever a circle is clicked
 function circleSuccessStart(i)
 {
 	score++;
 	makeNewCircle(circleXPositions[i], circleYPositions[i], i);
 }
 
+//generates a new circle at a valid position with a random velocity
 function makeNewCircle(oldX, oldY, i)
 {
 	let newX;
@@ -200,12 +220,7 @@ function makeNewCircle(oldX, oldY, i)
 	}
 }
 
-function preload()
-{
-	backArrow = loadImage('assets/back-arrow.svg');
-	pacifico = loadFont('assets/Pacifico-Regular.otf');
-}
-
+//displays the back arrow
 function drawArrow()
 {
 	drawingContext.shadowColor = 'black';
@@ -215,6 +230,7 @@ function drawArrow()
 	image(backArrow, 30, 30);
 }
 	
+//initializes instructions
 function setup()
 {
 	textFont(pacifico);
@@ -226,6 +242,7 @@ function setup()
 	drawInstructions();
 }
 
+//redraws on window resized
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
@@ -234,6 +251,7 @@ function windowResized()
 	if(lost) drawLost();
 }
 
+//draws game every frame only when gaming(not in a menu)
 function draw()
 {
 	if(gaming) 
@@ -243,6 +261,7 @@ function draw()
 	}
 }
 
+//checks where the mouse is upon moving mouse, depending on the gamestate we're in, and sets mouseHoverChecker accordingly
 function mouseMoved()
 {
 	if(instructions)
@@ -323,6 +342,7 @@ function mouseMoved()
 	}
 }
 
+//if the user clicks, use the determined mouse position from mouseHoverChecker to do whatever action necessary
 function mousePressed()
 {
 	if(mouseHoverChecker == 5)
@@ -416,6 +436,7 @@ function mousePressed()
 	}
 }
 
+//does the same thing as mousePressed but for Z and X and only for gaming
 function keyPressed()
 {
 	if(gaming)

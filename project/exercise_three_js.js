@@ -564,6 +564,7 @@ function mousePressed()
 	}
 	else if(settings)
 	{
+		//sets difficulty
 		switch(mouseHoverChecker)
 		{
 			case 1:

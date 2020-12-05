@@ -17,15 +17,19 @@ let score;
 let lost;
 let instructions;
 
+//load back arrow and font
 function preload()
 {
 	backArrow = loadImage('assets/back-arrow.svg');
 	pacifico = loadFont('assets/Pacifico-Regular.otf');
 }
 
+//draws several boxes and text within the boxes to display settings
 function drawSettings()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -53,9 +57,12 @@ function drawSettings()
 	drawArrow();
 }
 
+//draws several boxes with text within them to display instructions
 function drawInstructions()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -82,9 +89,12 @@ function drawInstructions()
 	drawArrow();
 }
 
+//displays the game over screen using rectangles and text
 function drawLost()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -108,6 +118,7 @@ function drawLost()
 	drawArrow();
 }
 
+//Displays the timer, and updates it based on frameCount, along with handling the time running out
 function drawTimer()
 {
 	if(frameCount % 60 == 0 && time > 0)
@@ -127,6 +138,7 @@ function drawTimer()
 	}
 }
 
+//Creates a line, using the accent color which matches the circle clicked
 function drawLine()
 {
 	switch(usedColors[parseInt(circleClicked/2)])
@@ -157,6 +169,7 @@ function drawLine()
 	line(xStart, yStart, mouseX, mouseY)
 }
 
+//Runs when a successful match is created
 function pairSuccessStart()
 {
 	score++;
@@ -164,9 +177,12 @@ function pairSuccessStart()
 	makeNewPair();
 }
 
+//Using the positions stored in arrays, draws the circles necessary.
 function drawCircles()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -204,9 +220,12 @@ function drawCircles()
 	}
 }
 
+//finds a valid position for a new circle pair and creates one, preventing repeat colors as well.
 function makeNewPair()
 {
 	background(60);
+	
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
@@ -301,15 +320,19 @@ function makeNewPair()
 	}
 }
 
+//displays the back arrow
 function drawArrow()
 {
+	//drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
 	drawingContext.shadowOffsetY = 2;
+	
 	image(backArrow, 30, 30);
 }
-	
+
+//initializes instructions
 function setup()
 {
 	textFont(pacifico);
@@ -322,6 +345,7 @@ function setup()
 	drawInstructions();
 }
 
+//redraws on window resized
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
@@ -330,6 +354,7 @@ function windowResized()
 	if(lost) drawLost();
 }
 
+//updates the line, circles, and timer every frame, and since clear() is used also updates the arrow
 function draw()
 {
 	if(gaming) 
@@ -343,6 +368,7 @@ function draw()
 	if(drawingLine) drawLine();
 }
 
+//checks where the mouse is upon moving mouse, depending on the gamestate we're in, and sets mouseHoverChecker accordingly
 function mouseMoved()
 {
 	if(instructions)
@@ -428,6 +454,7 @@ function mouseMoved()
 	}
 }
 
+//if the user clicks, use the determined mouse position from mouseHoverChecker to do whatever action necessary
 function mousePressed()
 {
 	if(mouseHoverChecker == 5)
@@ -639,6 +666,7 @@ function mousePressed()
 	}
 }
 
+//does the same thing as mousePressed but for Z and X and only for gaming
 function keyPressed()
 {
 	if(gaming)

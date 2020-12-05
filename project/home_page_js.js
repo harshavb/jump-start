@@ -4,19 +4,23 @@ let frames2;
 let frames3;
 let mouseHoverChecker;
 
+//loads the font
 function preload()
 {
 	pacifico = loadFont('assets/Pacifico-Regular.otf'); 
 }
 
+//Draws the background and all three buttons in the correct position using the parallaxX and parallaxY variables
 function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 {
 	clear();
 	
+	//remove drop shadow effect
 	drawingContext.shadowColor = 'black';
 	drawingContext.shadowBlur = 0;
 	drawingContext.shadowOffsetX = 0;
 	drawingContext.shadowOffsetY = 0;
+	
 	strokeWeight(0);
 	fill(32, 63, 153);
 	rect(0, 0, windowWidth, windowHeight/6);
@@ -27,9 +31,11 @@ function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 	fill(48, 45, 46);
 	rect(0, 6 * windowHeight/7, windowWidth, windowHeight/7);
 	
+	//drop shadow effect
 	drawingContext.shadowBlur = 5;
 	drawingContext.shadowOffsetX = 2;
 	drawingContext.shadowOffsetY = 2;
+	
 	fill(25, 154, 75);
 	rect(0, 2 * windowHeight/7 - (5 * frames1)/2 + parallaxY, 2 * windowWidth/5 + (5 * frames1) + parallaxX, windowHeight/7 + (5 * frames1), 0, windowWidth/14, windowWidth/14, 0);
 	rect(3 * windowWidth/5 + parallaxX - (5 * frames2), 3 * windowHeight/7 - (5 * frames2)/2 + parallaxY, 2 * windowWidth/5 + (5 * frames2) - parallaxX, windowHeight/7 + (5 * frames2), windowWidth/14, 0, 0, windowWidth/14);
@@ -51,6 +57,7 @@ function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 	text('JumpStart', windowWidth/2, windowHeight/9);
 }
 
+//draws the homepage the first time
 function setup() 
 {
 	textFont(pacifico);
@@ -61,6 +68,7 @@ function setup()
 	drawHomePage(frames1, frames2, frames3, 0, 0);
 }
 
+//redraws on window resize
 function windowResized() 
 {
 	frames1 = 0;
@@ -70,6 +78,7 @@ function windowResized()
 	drawHomePage(frames1, frames2, frames3, 0, 0);
 }
 
+//checks where the mouse is upon moving mouse, depending on the gamestate we're in, and sets mouseHoverChecker accordingly
 function mouseMoved()
 {
 	if(mouseY > 2 * windowHeight/7 && mouseY < 3 * windowHeight/7 && mouseX < 2 * windowWidth/5)
@@ -94,6 +103,8 @@ function mouseMoved()
 	}
 }
 
+//This one is tricky. It utilizes a system of detecting for how many frames any given button out of the three buttons has been hovered.
+//Essentially, we only grow buttons for a couple frames after being hovered over, and then we stop growing them.
 function draw() 
 {
 	switch(mouseHoverChecker)
@@ -132,6 +143,7 @@ function draw()
 	drawHomePage(frames1, frames2, frames3, (windowWidth/2 - mouseX)/100, (windowHeight/2 - mouseY)/100);
 }
 
+//if the user clicks, use the determined mouse position from mouseHoverChecker to do whatever action necessary
 function mouseClicked()
 {
 	switch(mouseHoverChecker)
@@ -150,6 +162,7 @@ function mouseClicked()
 	}
 }
 
+//Sets a gradient for a given rectangular region. It was taken from the p5js website. I have no idea how it works.
 function setGradient(x, y, w, h, c1, c2) 
 {
 	noFill();
