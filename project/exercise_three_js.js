@@ -161,7 +161,7 @@ function createNewShape()
 			rect(x - size/2, y - size/2, size, size);
 			break;
 		case 1:
-			shape = 2;
+			shape = 2; //kept as 2 in order to not need to refactor code
 			b = (size/2)/(Math.sqrt(2));
 			circle(x, y, size);
 			break;
@@ -195,6 +195,7 @@ function setup()
 	drawInstructions();
 }
 
+//redraws upon resizing window
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight);
@@ -203,6 +204,7 @@ function windowResized()
 	if(lost) drawLost();
 }
 
+//checks where the mouse is upon moving mouse, depending on the gamestate we're in, and sets mouseHoverChecker accordingly
 function mouseMoved()
 {
 	if(instructions)
@@ -251,6 +253,7 @@ function mouseMoved()
 	}
 	if(gaming)
 	{
+		//if we're not drawing a line, we check to see if we should start drawing a line here.
 		if(!drawingLine)
 		{
 			switch(shape)
@@ -267,9 +270,12 @@ function mouseMoved()
 							}
 							mouseXStartPosition = mouseX;
 							mouseYStartPosition = mouseY;
+							
+							//remove drop shadow effect
 							drawingContext.shadowBlur = 0;
 							drawingContext.shadowOffsetX = 0;
 							drawingContext.shadowOffsetY = 0;
+							
 							strokeWeight(0);
 							fill('lawngreen');
 							drawingLine = true;
@@ -287,9 +293,12 @@ function mouseMoved()
 							}
 							mouseXStartPosition = mouseX;
 							mouseYStartPosition = mouseY;
+							
+							//remove drop shadow effect
 							drawingContext.shadowBlur = 0;
 							drawingContext.shadowOffsetX = 0;
 							drawingContext.shadowOffsetY = 0;
+							
 							strokeWeight(0);
 							fill('lawngreen');
 							drawingLine = true;
@@ -307,9 +316,12 @@ function mouseMoved()
 						}
 						mouseXStartPosition = mouseX;
 						mouseYStartPosition = mouseY;
+						
+						//remove drop shadow effect
 						drawingContext.shadowBlur = 0;
 						drawingContext.shadowOffsetX = 0;
 						drawingContext.shadowOffsetY = 0;
+						
 						strokeWeight(0);
 						fill('lawngreen');
 						drawingLine = true;
@@ -320,6 +332,7 @@ function mouseMoved()
 					break;
 			}
 		}
+		//if we're drawing a line, update the drawChecks and compute the current status of the user's traced line accordingly
 		else if(drawingLine)
 		{
 			let inbounds = false;
@@ -330,9 +343,11 @@ function mouseMoved()
 					{
 						if(mouseY < y + (size/2 + weight/2) && mouseY > y - (size/2 + weight/2))
 						{
+							//remove drop shadow
 							drawingContext.shadowBlur = 0;
 							drawingContext.shadowOffsetX = 0;
 							drawingContext.shadowOffsetY = 0;
+							
 							strokeWeight(0);
 							fill('lawngreen');
 							circle(mouseX, mouseY, 8);
@@ -361,9 +376,11 @@ function mouseMoved()
 					{
 						if(mouseX < x + (size/2 + weight/2) && mouseX > x - (size/2 + weight/2))
 						{
+							//remove drop shadow
 							drawingContext.shadowBlur = 0;
 							drawingContext.shadowOffsetX = 0;
 							drawingContext.shadowOffsetY = 0;
+							
 							strokeWeight(0);
 							fill('lawngreen');
 							circle(mouseX, mouseY, 8);
@@ -390,10 +407,13 @@ function mouseMoved()
 							drawLost();
 							return;
 						}
+						
+						//drop shadow effect
 						drawingContext.shadowColor = 'black';
 						drawingContext.shadowBlur = 5;
 						drawingContext.shadowOffsetX = 2;
 						drawingContext.shadowOffsetY = 2;
+						
 						drawingLine = false;
 						fill(100);
 						strokeWeight(weight);
@@ -408,9 +428,11 @@ function mouseMoved()
 				case 2:
 					if(dist(mouseX, mouseY, x, y) > size/2 - weight/2 && dist(mouseX, mouseY, x, y) < size/2 + weight/2)
 					{
+						//remove drop shadaow effect
 						drawingContext.shadowBlur = 0;
 						drawingContext.shadowOffsetX = 0;
 						drawingContext.shadowOffsetY = 0;
+						
 						strokeWeight(0);
 						fill('lawngreen');
 						circle(mouseX, mouseY, 8);
@@ -442,8 +464,9 @@ function mouseMoved()
 							if(Math.abs(mouseY - (y - b)) < weight/2)
 								drawChecks[7] = 1;
 						}
+						inbounds = true;
 					}
-					else
+					if(!inbounds)
 					{
 						strikes--;
 						if(strikes == 0)
@@ -453,10 +476,13 @@ function mouseMoved()
 							drawLost();
 							return;
 						}
+						
+						//drop shadow effect
 						drawingContext.shadowColor = 'black';
 						drawingContext.shadowBlur = 5;
 						drawingContext.shadowOffsetX = 2;
 						drawingContext.shadowOffsetY = 2;
+						
 						drawingLine = false;
 						fill(100);
 						strokeWeight(weight);
@@ -481,6 +507,8 @@ function mouseMoved()
 				if(drawCheck)
 				{
 					drawingLine = false;
+					
+					//drop shadow effect
 					drawingContext.shadowColor = 'black';
 					drawingContext.shadowBlur = 5;
 					drawingContext.shadowOffsetX = 2;
@@ -517,6 +545,7 @@ function mouseMoved()
 	}
 }
 
+//if the user clicks, use the determined mouse position from mouseHoverChecker to do whatever action necessary
 function mousePressed()
 {
 	if(mouseHoverChecker == 5)
