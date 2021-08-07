@@ -47,9 +47,9 @@ function drawSettings()
 	
 	fill(100);
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Difficulty', windowWidth/2, windowHeight/3);
-	textSize(48);
+	textSize(min(windowHeight/20.35, windowWidth/40));
 	text('Easy', 49 * windowWidth/156, 5 * windowHeight/9);
 	text('Medium', windowWidth/2, 5 * windowHeight/9);
 	text('Hard', 107 * windowWidth/156, 5 * windowHeight/9);
@@ -78,9 +78,9 @@ function drawInstructions()
 	
 	fill(100);
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Exercise 2: Matching Pairs', windowWidth/2, 4 * windowHeight/15);
-	textSize(48);
+	textSize(min(windowHeight/20.35, windowWidth/40));
 	rectMode(CENTER);
 	text('In this exercise, colored circles will appear on your screen. Click on a circle (or use Z and X) and match it with its colored pair.', windowWidth/2, 5 * windowHeight/9, windowWidth/2, windowHeight/2);
 	rectMode(CORNER);
@@ -110,9 +110,9 @@ function drawLost()
 	
 	fill(color('red'));
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Game Over (Score: ' + score + ')', windowWidth/2, windowHeight/3);
-	textSize(48);
+	textSize(min(windowHeight/20.35, windowWidth/40));
 	text('Try Again?', windowWidth/2, 5 * windowHeight/9);
 
 	drawArrow();
@@ -124,7 +124,7 @@ function drawTimer()
 	if(frameCount % 60 == 0 && time > 0)
 		time--;
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Time: ' + time, width/2, height/7);
 	text('Score: ' + score, width/2, height/4);
 	if(time == 0)
@@ -495,7 +495,7 @@ function mousePressed()
 		if(mouseHoverChecker > 0)
 		{
 			textAlign(CENTER);
-			textSize(100);
+			textSize(min(windowHeight/9.77, windowWidth/19.2));
 			time = maxTime;
 			text(time, width/2, height/7);
 			let newX;
