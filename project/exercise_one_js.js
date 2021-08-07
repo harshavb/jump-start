@@ -46,9 +46,9 @@ function drawSettings()
 	
 	fill(100);
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Difficulty', windowWidth/2, windowHeight/3);
-	textSize(48);
+	textSize(min(windowHeight/20.35, windowWidth/40));
 	text('Easy', 49 * windowWidth/156, 5 * windowHeight/9);
 	text('Medium', windowWidth/2, 5 * windowHeight/9);
 	text('Hard', 107 * windowWidth/156, 5 * windowHeight/9);
@@ -77,9 +77,9 @@ function drawInstructions()
 	
 	fill(100);
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Exercise 1: Circle Popping', windowWidth/2, 4 * windowHeight/15);
-	textSize(48);
+	textSize(min(windowHeight/20.35, windowWidth/40));
 	rectMode(CENTER);
 	text('In this exercise, a bunch of floating circles will move around your screen. Simply click on the circles before the grow too big! (Or use Z and X)', windowWidth/2, 5 * windowHeight/9, windowWidth/2, windowHeight/2);
 	rectMode(CORNER);
@@ -109,9 +109,9 @@ function drawLost()
 	
 	fill(color('red'));
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Game Over (Score: ' + score + ')', windowWidth/2, windowHeight/3);
-	textSize(48);
+	textSize(min(windowHeight/20.35, windowWidth/40));
 	text('Try Again?', windowWidth/2, 5 * windowHeight/9);
 	
 	drawArrow();
@@ -125,7 +125,7 @@ function drawGame(difficulty)
 	background(60);
 	fill(color('red'));
 	textAlign(CENTER);
-	textSize(72);
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('Score: ' + score, windowWidth/2, windowHeight/6);
 	for(i = 0; i < circleCount; i++)
 	{
