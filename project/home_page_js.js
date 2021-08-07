@@ -43,17 +43,17 @@ function drawHomePage(frames1, frames2, frames3, parallaxX, parallaxY)
 	
 	textAlign(CENTER);
 	fill('white');
-	textSize(2 * frames1 + 48);
+	textSize(2 * frames1 + min(windowHeight/20.35, windowWidth/45.71));
 	text('Exercise One: Circle Popping', windowWidth/5 + parallaxX, 3 * windowHeight/8 + parallaxY);
-	textSize(2 * frames2 + 48);
+	textSize(2 * frames2 + min(windowHeight/20.35, windowWidth/45.71));
 	text('Exercise Two: Matching Pairs', 4 * windowWidth/5 + parallaxX, 15 * windowHeight/29 + parallaxY);
-	textSize(2 * frames3 + 48);
+	textSize(2 * frames3 + min(windowHeight/20.35, windowWidth/45.71));
 	text('Exercise Three: Tracing Shapes', windowWidth/5 + parallaxX, 27 * windowHeight/41 + parallaxY);
 	
 	fill(25, 154, 75);
 	stroke(20, 102, 51);
 	strokeWeight(6);
-	textSize(min(windowHeight/15, windowWidth/26.67));
+	textSize(min(windowHeight/13.57, windowWidth/26.67));
 	text('JumpStart', windowWidth/2, windowHeight/9);
 }
 
